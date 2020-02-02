@@ -20,4 +20,53 @@ Throw Score
 1 1 1 3 1 1000 + 100 = 1100
 2 4 4 5 4 400 + 50 = 450
 In some languages, it is possible to mutate the input to the
-function.This is something that you should never do.If you mutate the input, you will not be able to pass all the tests./*
+function.This is something that you should never do.If you mutate the input, you will not be able to pass all the tests.*/
+
+
+//Attempt 1
+const score = (dice) => {
+    let totalScore = 0;
+    let newArr = dice.reduce((obj, val) => {
+        if (val in obj) {
+            obj[val]++;
+        } else {
+            obj[val] = 1;
+        }
+        //console.log(obj)
+        return obj;
+    }, {})
+
+    for (var key in newArr) {
+        //3 of a kind or more
+        if (newArr[key] >= 3) {
+            let tempKeyValue = newArr[key] - 3
+            //updating total score
+            if (key === "1") {
+                // totatlScore = 3 of a kind score + reminder if it is the same key
+                totalScore += (1000 + (tempKeyValue * 100))
+            } else if (key === "5") {
+                totalScore += ((key * 100) + (tempKeyValue * 50))
+            } else {
+                //console.log(totalScore)
+                totalScore += (key * 100)
+            }
+
+            //console.log(`${key}: ${newArr[key]} - if`)
+            // less then 3     
+        } else {
+
+            if (key === "1") {
+                totalScore += (newArr[key] * 100)
+            } else if (key === "5") {
+                totalScore += (newArr[key] * 50)
+            }
+
+            //console.log(`${key}: ${newArr[key]} - else`)
+
+        } //end of else
+
+    }
+    return totalScore
+}
+
+
