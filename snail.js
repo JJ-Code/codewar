@@ -27,6 +27,7 @@ NOTE 2: The 0x0 (empty matrix) is represented as en empty array inside an array 
 
 
 
+//Solution 1: Recursion 
 
 const snail = (arr, newArr = [], count = 1) => {
     let tempArr;
@@ -37,8 +38,6 @@ const snail = (arr, newArr = [], count = 1) => {
     if (count === 1) {
         console.log(arr)
         tempArr = arr.shift();
-
-        console.log(tempArr + " count1")
         return snail(arr, [...newArr, ...tempArr], count + 1)
 
     }
@@ -46,13 +45,10 @@ const snail = (arr, newArr = [], count = 1) => {
     else if (count === 2) {
         tempArr = [];
         arr.forEach(subArr => {
-
             tempArr.push(subArr.pop())
         })
         console.log(tempArr, " count2")
         return snail(arr, [...newArr, ...tempArr], count + 1)
-
-
     }
 
     // grabbing and removing last index in arr and reversing subArr into newArr (<--- going right )
@@ -60,7 +56,6 @@ const snail = (arr, newArr = [], count = 1) => {
         tempArr = arr.pop().reverse();
         console.log(tempArr, " count3")
         return snail(arr, [...newArr, ...tempArr], count + 1)
-
     }
 
     // grabbing and removing first index in subArr into newArr from all arr index in reverse index order (going up ^)
