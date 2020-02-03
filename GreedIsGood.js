@@ -96,8 +96,8 @@ const addTotal = (die, count, score = 0) => {
 }
 
 
-const diceScore = (arr) => {
-    let score = 0;
+const score = (arr) => {
+    let scoreTotal = 0;
     let diceObj = arr.reduce((obj, val) => {
         (val in obj) ? obj[val]++: obj[val] = 1;
         return obj;
@@ -106,9 +106,9 @@ const diceScore = (arr) => {
     const objArr = Object.entries(diceObj);
     //destructure sub array of obj and invoking helper function 
     for (let [die, count] of objArr) {
-        score += addTotal(die, count)
+        scoreTotal += addTotal(die, count)
     };
-    return score;
+    return scoreTotal;
 }
 
 /*-----------------------------------------------*/
