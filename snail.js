@@ -36,10 +36,8 @@ const snail = (arr, newArr = [], count = 1) => {
     if (arr.length === 0) return newArr;
 
     if (count === 1) {
-        console.log(arr)
         tempArr = arr.shift();
         return snail(arr, [...newArr, ...tempArr], count + 1)
-
     }
     // grabbing and removing last index in subArr into newArr from all arr index (going down)
     else if (count === 2) {
@@ -47,31 +45,24 @@ const snail = (arr, newArr = [], count = 1) => {
         arr.forEach(subArr => {
             tempArr.push(subArr.pop())
         })
-        console.log(tempArr, " count2")
         return snail(arr, [...newArr, ...tempArr], count + 1)
     }
 
     // grabbing and removing last index in arr and reversing subArr into newArr (<--- going right )
     else if (count === 3) {
         tempArr = arr.pop().reverse();
-        console.log(tempArr, " count3")
         return snail(arr, [...newArr, ...tempArr], count + 1)
     }
 
     // grabbing and removing first index in subArr into newArr from all arr index in reverse index order (going up ^)
     else if (count === 4) {
-
         tempArr = []
         arr.forEach(subArr => {
-            //console.log(subArr + "  up")
             tempArr.push(subArr.shift())
         })
         tempArr.reverse();
-        console.log(tempArr, " count4")
         return snail(arr, [...newArr, ...tempArr], count = 1)
     }
-
-
 }
 
 //Test 1 
