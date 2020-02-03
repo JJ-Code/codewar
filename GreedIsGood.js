@@ -23,7 +23,7 @@ In some languages, it is possible to mutate the input to the
 function.This is something that you should never do.If you mutate the input, you will not be able to pass all the tests.*/
 
 
-//Attempt 1
+//Solution 1: Reduce Method and object math
 const score = (dice) => {
     let totalScore = 0;
     let newArr = dice.reduce((obj, val) => {
@@ -69,4 +69,46 @@ const score = (dice) => {
     return totalScore
 }
 
+/*-----------------------------------------------*/
 
+//Solution 2: Recursion, Reduce Method and Destructing 
+
+//recursion adder helper function
+const addTotal = (die, count, score = 0) => {
+    if (count === 0) return score;
+    else if (count >= 3) {
+        if (die === "1") {
+            return addTotal(die, count - 3, score + 1000)
+        } else {
+            return addTotal(die, count - 3, score + (die * 100))
+        }
+    } else {
+        if (die === "1") {
+            return addTotal(die, count - 1, score + 100)
+        } else if (die === "5") {
+            return addTotal(die, count - 1, score + 50)
+        } else {
+            return addTotal(die, count - count, score)
+        }
+
+    }
+
+}
+
+
+const diceScore = (arr) => {
+    let score = 0;
+    let diceObj = arr.reduce((obj, val) => {
+        (val in obj) ? obj[val]++: obj[val] = 1;
+        return obj;
+    }, {})
+    //destructure obj into array 
+    const objArr = Object.entries(diceObj);
+    //destructure sub array of obj and invoking helper function 
+    for (let [die, count] of objArr) {
+        score += addTotal(die, count)
+    };
+    return score;
+}
+
+/*-----------------------------------------------*/
