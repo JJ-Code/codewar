@@ -78,9 +78,9 @@ const XO = (str) => {
     }, 0)
     //if it is balance it should be 0
     if (charCount === 0) {
-        return true
+        return true;
     } else {
-        return false
+        return false;
     }
 
 }
