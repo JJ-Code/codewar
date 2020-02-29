@@ -38,7 +38,7 @@ const towerBuilder = (nFloors, arrTower = []) => {
 
   else if (arrTower.length === 0) {
     let starsPrint = star.repeat(totalStarsFloor)
-    arrTower.push(starsPrint)
+    arrTower.unshift(starsPrint)
     return towerBuilder(nFloors - 1, arrTower)
   } else {
     let starsPrint = star.repeat(totalStarsFloor)
@@ -46,7 +46,7 @@ const towerBuilder = (nFloors, arrTower = []) => {
     let spacesHalf = totalSpaces / 2;
     let spacePrint = space.repeat(spacesHalf);
     let string = `${spacePrint}${starsPrint}${spacePrint}`;
-    arrTower.push(string);
+    arrTower.unshift(string);
     return towerBuilder(nFloors - 1, arrTower)
 
   }
