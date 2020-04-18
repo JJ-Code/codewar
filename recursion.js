@@ -1,7 +1,7 @@
 //power exponent - takes a base and exponent and should function like Math.pow() with no negatives
 
 
-const pwoer = (base, x) => {
+const power = (base, x) => {
   if (x === 0) return 1;
   return base * power(base, x - 1)
 }
@@ -104,4 +104,61 @@ const isPalindrome = (initalStr) => {
     }
   }
   return helper();
+}
+
+
+// SAMPLE INPUT / OUTPUT
+// const isOdd = val => val % 2 !== 0;
+
+// someRecursive([1,2,3,4], isOdd) // true
+// someRecursive([4,6,8,9], isOdd) // true
+// someRecursive([4,6,8], isOdd) // false
+// someRecursive([4,6,8], val => val > 10); // false
+
+const someRecursive = (arr, fn) => {
+  let testFn = fn(arr[0])
+  //base case for true
+  if (testFn === true) {
+    return true;
+  }
+  //base case false 
+  else if (arr.length === 0) {
+    return false;
+  }
+  // if arr[0] is not true in the function then remove it from the arr and check the next vale
+  // keep going until arr.length is not 0 
+  else {
+    return someRecursive(arr.slice(1))
+  }
+}
+
+const someRecursive = (arr, fn) => {
+  let curr = arr[0]
+  console.log(curr)
+  //base case false 
+  if (arr.length === 0) {
+    return false;
+  }
+  //base case for true
+  else if (fn(curr)) {
+    return true;
+  }
+
+  // if arr[0] is not true in the function then remove it from the arr and check the next vale
+  // keep going until arr.length is not 0 
+  else {
+    return someRecursive(arr.slice(1), fn)
+  }
+}
+
+
+
+// flatten([1, 2, 3, [4, 5] ]) // [1, 2, 3, 4, 5]
+// flatten([1, [2, [3, 4], [[5]]]]) // [1, 2, 3, 4, 5]
+// flatten([[1],[2],[3]]) // [1,2,3]
+// flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]) // [1,2,3]
+
+
+const flatten = (arr) => {
+return arr.toString().split("").filter((item) => item !== ",").map((item) => parseInt(item))
 }
