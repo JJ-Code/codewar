@@ -159,6 +159,41 @@ const someRecursive = (arr, fn) => {
 // flatten([[[[1], [[[2]]], [[[[[[[3]]]]]]]]]]) // [1,2,3]
 
 
+//not recurisve 
 const flatten = (arr) => {
 return arr.toString().split("").filter((item) => item !== ",").map((item) => parseInt(item))
 }
+
+
+//recurisve 
+const flatten2 = (oldArr) =>{
+  var newArr = []
+  for (var i = 0; i < oldArr.length; i++) {
+    if (Array.isArray(oldArr[i])) {
+      newArr = newArr.concat(flatten(oldArr[i]))
+    } else {
+      newArr.push(oldArr[i])
+    }
+  }
+  return newArr;
+}
+
+
+// capitalizeFirst(['car','taco','banana']); // ['Car','Taco','Banana']
+
+const capitalizeFirst = (array, newArr = []) => {
+  //stop condition 
+  if (array.length === 0) {
+    return newArr
+  } else {
+    let firstWord = array[0]
+    let firstChar = firstWord.slice(0, 1).toUpperCase()
+    let remChar = firstWord.slice(1, firstWord.length)
+    let combo = firstChar + remChar
+    newArr.push(combo);
+    return capitalizeFirst(array.slice(1), newArr)
+  }
+}
+
+
+ 
