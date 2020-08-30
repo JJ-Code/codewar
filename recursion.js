@@ -195,5 +195,24 @@ const capitalizeFirst = (array, newArr = []) => {
   }
 }
 
+const vowels2 = (str, count = 0) => {
 
- 
+  if (str.length === 0) {
+    return console.log(count);
+  }
+
+  else {
+    const n = ["a", "e", "i", "o", "u"].includes(str[0])
+    if (n === true) {
+
+      vowels2(str.substring(1), count + 1)
+
+    } else {
+      //console.log(n, str, count, "else")
+      vowels2(str.substring(1), count + 0)
+    }
+  }
+
+
+}
+
