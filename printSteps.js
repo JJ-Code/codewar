@@ -31,9 +31,16 @@ const steps = (n) => {
 }
 
 
-steps(4)
+steps(4);
+/* will print
+"*   "
+"**  "
+"*** "
+"****"
+*/
 
-const recrusiveSteps = (n, starCount = 1) => {
+//recursive solution 
+const recursiveSteps = (n, starCount = 1) => {
   const star = "*".repeat(starCount);
   const space = " ".repeat(n - starCount)
 
@@ -41,13 +48,21 @@ const recrusiveSteps = (n, starCount = 1) => {
   if (n === starCount) {
     return console.log(star + space)
   }
-   //stoping  condition for n = 0
+  //stoping  condition for n = 0
   else if (n === 0) {
     return console.log("")
   }
   else {
     console.log(star + space)
-    recrusiveSteps(n, starCount + 1)
+    recursiveSteps(n, starCount + 1)
   }
-  
+
 }
+
+recursiveSteps(4);
+/* will print
+"*   "
+"**  "
+"*** "
+"****"
+*/
