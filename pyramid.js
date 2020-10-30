@@ -21,7 +21,11 @@ const pyramid = (n) => {
   const totalLength = n + (n - 1);
 
   for (let starCount = 1; starCount <= totalLength; starCount += 2) {
+
+    //the star will corresponds to the starCount.It will increase by 2 for each row 
     const stars = "*".repeat(starCount)
+
+    //the empty spaces will not correspond to the starCount and increment by 2. 
     const halfSpaces = " ".repeat((totalLength - starCount) / 2)
     console.log(halfSpaces + stars + halfSpaces);
   }

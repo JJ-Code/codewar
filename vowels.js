@@ -9,7 +9,7 @@
 
 const vowels = (str) => {
   const vowelArr = ["a", "e", "i", "o", "u"]
-  const strArr = str.split("")
+  const strArr = str.toLowerCase().split("")
 
   return strArr.reduce((prev, curr) => {
     let n = vowelArr.includes(curr)
@@ -19,6 +19,39 @@ const vowels = (str) => {
     return prev;
   }, 0)
 };
+
+
+//same concept as reduce but with the forEach method
+const vowels = (str) => {
+  const vowelArr = ["a", "e", "i", "o", "u"]
+  const strArr = str.toLowerCase().split("")
+  let count = 0;
+  strArr.forEach(letter => {
+    let n = vowelArr.includes(letter)
+    if (n === true) {
+      return count++
+    }
+  });
+  console.log(count);
+  return count;
+}
+
+//with no includes method
+const vowels = (str) => {
+  const vowelArr = ["a", "e", "i", "o", "u"]
+  const strArr = str.toLowerCase().split("")
+  let count = 0;
+  strArr.forEach(letter => {
+    return vowelArr.forEach(vowel => {
+      if (letter === vowel) {
+        return count++
+      }
+
+    })
+  });
+
+  return count;
+}
 
 
 
@@ -40,6 +73,4 @@ const vowels2 = (str, count = 0) => {
       vowels2(str.substring(1), count + 0)
     }
   }
-
-
 }
